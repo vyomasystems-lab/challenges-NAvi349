@@ -13,7 +13,7 @@ async def test_mux(dut):
 
     dut.inp12.value = 1;
 
-    assert dut.out.value == dut.inp12.value "MUX failed with input = {inp12}, select = {SEL}".format(
+    assert dut.out.value == dut.inp12.value, "MUX failed with input = {inp12}, select = {SEL}".format(
             inp12=dut.inp12.value, SEL=dut.sel.value)
 
     

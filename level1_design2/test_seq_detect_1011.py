@@ -51,13 +51,15 @@ async def test_seq_bug1(dut):
 
     cocotb.log.info('#### CTB: Develop your test here! ######')
     input_seq = str()
+    org_seq = str()
 
     for times in range(0, 40):
         bit = random.randint(0, 1)
+        org_seq = org_seq + str(int)
         
         input_seq = input_seq + str(bit)
         
-        org_seq = input_seq[:]
+
         detect_out = subseq(bit, input_seq)
         input_seq = format_seq(input_seq)
 

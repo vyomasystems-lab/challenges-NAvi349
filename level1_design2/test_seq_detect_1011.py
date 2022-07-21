@@ -22,12 +22,19 @@ def subseq(bit, input_seq):
     #print(input_seq)    
 
     if ('1011' in input_seq):
+        return 1
+    else:
+        return 0
+
+def format_seq(input_seq):
+
+    if ('1011' in input_seq):
         pos = input_seq.find('1011')
         input_seq = input_seq[(pos+3):]
         #print("new str = " + input_seq)
-        return [1, input_seq]
-    else:
-        return 0
+    
+    return input_seq
+    
 
 @cocotb.test()
 async def test_seq_bug1(dut):
@@ -45,19 +52,23 @@ async def test_seq_bug1(dut):
     cocotb.log.info('#### CTB: Develop your test here! ######')
     input_seq = str()
 
-    for times in range(0, 10):
+    for times in range(0, 40):
         bit = random.randint(0, 1)
-
-
         
         input_seq = input_seq + str(bit)
-
-        [detect_out, input_seq] = subseq(bit, input_seq)
+        
+        org_seq = input_seq
+        detect_out = subseq(bit, input_seq)
+        input_seq = format_seq(input_seq)
 
         dut.inp_bit.value = bit
 
         await FallingEdge(dut.clk)
 
         dut._log.info(f'inp_bit = {dut.inp_bit.value} expected_output={detect_out} DUT = {dut.seq_seen.value}')
+        
 
+        assert detect_out==dut.seq_seen.value, "FSM failed for the input sequence = {seq}".format(seq = org_seq)
+
+            
 

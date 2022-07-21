@@ -65,7 +65,7 @@ async def test_seq_bug1(dut):
 
         await FallingEdge(dut.clk)
 
-        dut._log.info(f'inp_bit = {dut.inp_bit.value} expected_output={detect_out} DUT = {dut.seq_seen.value}')
+        dut._log.info(f'inp_bit = {dut.inp_bit.value} expected_output = {detect_out} DUT = {dut.seq_seen.value}')
         
 
         assert detect_out==dut.seq_seen.value, "FSM failed for the input sequence = {seq}".format(seq = org_seq)

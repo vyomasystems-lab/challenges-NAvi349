@@ -57,7 +57,7 @@ async def test_seq_bug1(dut):
         
         input_seq = input_seq + str(bit)
         
-        org_seq = input_seq
+        org_seq = input_seq[:]
         detect_out = subseq(bit, input_seq)
         input_seq = format_seq(input_seq)
 

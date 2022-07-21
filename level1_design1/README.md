@@ -6,3 +6,8 @@
 
 - Here we use try..except block to simulate all the inputs.
 - We print the error when there is a functional mismatch.
+
+## Fixed MUX
+
+![image](https://user-images.githubusercontent.com/66086031/180254497-96830231-e4cb-4b2e-9a2f-3cbd284753a8.png)
+

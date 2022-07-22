@@ -15,9 +15,7 @@ def subseq(bit, input_seq):
 
     """
     Finds the 1011 sub-sequence in the input sequence.
-    If found it will until the last before bit
-    Suppose 1010110 is detected, then the sequence now is 10
-    This is help us to detect overlapping 1011 patterns
+    Suppose 1010110 is detected, then the sequence now is 0
     """
     #print(input_seq)    
 
@@ -27,11 +25,10 @@ def subseq(bit, input_seq):
         return 0
 
 def format_seq(input_seq):
-
+    
     if ('1011' in input_seq):
         pos = input_seq.find('1011')
-        input_seq = input_seq[(pos+3):]
-        #print("new str = " + input_seq)
+        input_seq = input_seq[(pos+4):]  # remove the valid sequence after it is detected       
     
     return input_seq
     
@@ -55,20 +52,19 @@ async def test_seq_bug1(dut):
 
     for times in range(0, 40):
         bit = random.randint(0, 1)
-        org_seq = org_seq + str(bit)
+        org_seq = org_seq + str(bit)    # full input_sequence
         
-        input_seq = input_seq + str(bit)
+        input_seq = input_seq + str(bit) # input sequence after removing detected sequences
         
 
-        detect_out = subseq(bit, input_seq)
+        detect_out = subseq(bit, input_seq)  # detect sequence 1011
         input_seq = format_seq(input_seq)
 
         dut.inp_bit.value = bit
 
-        await FallingEdge(dut.clk)
+        await FallingEdge(dut.clk)   # wait for next clock edge after giving input
 
-        dut._log.info(f'inp_bit = {dut.inp_bit.value} expected_output = {detect_out} DUT = {dut.seq_seen.value}')
-        
+        dut._log.info(f'inp_bit = {dut.inp_bit.value} expected_output = {detect_out} DUT = {dut.seq_seen.value}')        
 
         assert detect_out==dut.seq_seen.value, "FSM failed for the input sequence = {seq}".format(seq = org_seq)
 

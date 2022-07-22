@@ -50,7 +50,7 @@ async def test_seq_bug1(dut):
     input_seq = str()
     org_seq = str()
 
-    for times in range(0, 40):
+    for times in range(0, 30):
         bit = random.randint(0, 1)
         org_seq = org_seq + str(bit)    # full input_sequence
         

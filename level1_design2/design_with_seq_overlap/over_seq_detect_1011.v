@@ -1,6 +1,8 @@
 // See LICENSE.vyoma for more details
 // Verilog module for Sequence detection: 1011
-module seq_detect_1011(seq_seen, inp_bit, reset, clk);
+
+// Detects overlapping sequences
+module over_seq_detect_1011(seq_seen, inp_bit, reset, clk);
 
   output seq_seen;
   input inp_bit;
@@ -46,7 +48,7 @@ module seq_detect_1011(seq_seen, inp_bit, reset, clk);
       SEQ_1:
       begin
         if(inp_bit == 1)
-          next_state = IDLE; // should stay in SEQ_1
+          next_state = SEQ_1; // this line changed
         else
           next_state = SEQ_10;
       end
@@ -62,11 +64,14 @@ module seq_detect_1011(seq_seen, inp_bit, reset, clk);
         if(inp_bit == 1)
           next_state = SEQ_1011; 
         else
-          next_state = IDLE; // should go to SEQ_10
+          next_state = SEQ_10; // this line also changed
       end
-      SEQ_1011: // this will detect only non-overlapping sequences
+      SEQ_1011: // this will detect overlapping sequences
       begin
-        next_state = IDLE; // if 1 goto SEQ_1 else goto SEQ_10
+        if(inp_bit == 1)
+          next_state = SEQ_1; // if 1 goto SEQ_1 else goto SEQ_10
+        else
+          next_state = SEQ_10;
       end
     endcase
   end

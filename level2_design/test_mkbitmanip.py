@@ -36,8 +36,8 @@ def run_test(dut):
     # input transaction
     for i in range(0, 20):
         mav_putvalue_src1 = 0x5
-        mav_putvalue_src2 = 0x0
-        mav_putvalue_src3 = 0x0
+        mav_putvalue_src2 = 0x1
+        mav_putvalue_src3 = 0x1
         mav_putvalue_instr = 0x10F133
 
 

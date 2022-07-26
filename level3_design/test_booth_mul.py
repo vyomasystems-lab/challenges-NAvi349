@@ -53,4 +53,7 @@ async def test_seq_1(dut):
     dut._log.info(f'DONE = {dut.done.value}')
 
     dut._log.info(f"A = {Multiplicand} B = {Multiplier}") 
-    dut._log.info(f"Expected value = {Result} DUT value {dut.out.value.signed_integer}")
+    
+    out = dut.out.value.signed_integer
+    dut._log.info(f"Expected value = {Result}, DUT value {out}")
+    assert Result == dut.out.value.signed_integer, f"Expected value{Result} does not match the DUT value{out}"

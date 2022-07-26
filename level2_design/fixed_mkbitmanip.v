@@ -596,6 +596,7 @@ module fixed_mkbitmanip(CLK,
 		x__h39722,
 		x__h39744,
 		x__h39889,
+		x__h39890, // This new wire for ANDN
 		x__h4402,
 		x__h4625,
 		x__h6800,
@@ -1011,7 +1012,7 @@ module fixed_mkbitmanip(CLK,
 	     (mav_putvalue_instr[26:25] == 2'b11 &&
 	      x__h254 == 10'b0010110011) ?
 	       field1__h2958 :
-	       field1__h3009 ;
+	       field1__h3009 ;    // CMIX
   assign IF_mav_putvalue_instr_BITS_31_TO_25_CONCAT_mav_ETC___d2264 =
 	     (x__h1209 == 18'b011000000010001001 &&
 	      mav_putvalue_instr[2:0] == 3'b011) ?
@@ -2658,7 +2659,7 @@ module fixed_mkbitmanip(CLK,
   assign field1__h109 =
 	     (mav_putvalue_instr[31:25] == 7'b0100000 &&
 	      x__h254 == 10'b1110110011) ?
-	       x__h39889 :
+	       x__h39890 :
 	       IF_mav_putvalue_instr_BITS_31_TO_25_EQ_0b10000_ETC___d2273 ;  // ANDN Instruction
   assign field1__h1126 = { 16'd0, rs__h8634 } ;
   assign field1__h1205 =
@@ -2724,7 +2725,7 @@ module fixed_mkbitmanip(CLK,
 	     mav_putvalue_src2[31] ?
 	       x__h38206 :
 	       IF_mav_putvalue_src2_BIT_30_75_THEN_IF_mav_put_ETC___d2219 ;
-  assign field1__h2904 = x__h39669 | y__h39670 ;   // ANDN Instruction
+  assign field1__h2904 = x__h39669 | y__h39670 ;   
   assign field1__h2958 = x__h39889 | y__h39890 ;       
   assign field1__h3009 =
 	     (mav_putvalue_src2 == 32'd0) ?
@@ -3908,7 +3909,8 @@ module fixed_mkbitmanip(CLK,
   assign x__h39669 = data__h39658 & mask__h39657 ;
   assign x__h39722 = ~x__h39744 ;
   assign x__h39744 = 32'hFFFFFFFF << shamt__h39728 ;
-  assign x__h39889 = mav_putvalue_src1 & (~mav_putvalue_src2) ;    // This line changed to negate src2
+  assign x__h39889 = mav_putvalue_src1 & mav_putvalue_src2 ;    
+  assign x__h39890 = mav_putvalue_src1 & (~mav_putvalue_src2) ; // This line added to negate src2 in ANDN fixes error
   assign x__h410 = { mav_putvalue_instr[14:12], mav_putvalue_instr[6:4] } ;
   assign x__h4309 = mav_putvalue_src1[x__h4425] ;
   assign x__h4402 = 32'd1 << x__h4425 ;

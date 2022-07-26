@@ -73,7 +73,8 @@ def run_test(dut):
         # obtaining the output
         dut_output = dut.mav_putvalue.value
 
-
+        cocotb.log.info(f'DUT OUTPUT={hex(dut_output)}')
+        cocotb.log.info(f'EXPECTED OUTPUT={hex(expected_mav_putvalue)}')
         
         # comparison
         error_message = f'Value mismatch DUT = {hex(dut_output)} does not match MODEL = {hex(expected_mav_putvalue)}'
@@ -82,7 +83,6 @@ def run_test(dut):
         except AssertionError:
             cocotb.log.info(f'INSTR={hex(inst)}')
             cocotb.log.info(f'SRC1={hex(mav_putvalue_src1)} SRC2={hex(mav_putvalue_src2)} SRC3={hex(mav_putvalue_src3)}')
-            cocotb.log.info(f'DUT OUTPUT={hex(dut_output)}')
-            cocotb.log.info(f'EXPECTED OUTPUT={hex(expected_mav_putvalue)}')
+
             print(error_message)
 

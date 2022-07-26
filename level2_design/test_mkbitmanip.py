@@ -49,10 +49,10 @@ def run_test(dut):
     my_file.close()  
       
 
-    for inst in mem[0:3]:
-        mav_putvalue_src1 = random.randint(0, 2**5)
-        mav_putvalue_src2 = random.randint(0, 2**5)
-        mav_putvalue_src3 = random.randint(0, 2**5)
+    for inst in mem:
+        mav_putvalue_src1 = 3
+        mav_putvalue_src2 = 2
+        mav_putvalue_src3 = 0
 
         
         mav_putvalue_instr = inst

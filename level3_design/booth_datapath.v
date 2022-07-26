@@ -1,4 +1,4 @@
-module booth_datapath ( input clk, ldA, ldM, ldQ, clrA, clrQ, clrff, sftA, sftQ, addsub, dec, ldCnt, input [15:0] data_in, output q0, qm1, eqz);
+module booth_datapath ( input clk, ldA, ldM, ldQ, clrA, clrQ, clrff, sftA, sftQ, addsub, dec, ldCnt, input [15:0] data_in, output q0, qm1, eqz, output [15:0] A, M, Q);
 
     wire [15:0] A, M, Q, Z;
     wire [4:0] count;

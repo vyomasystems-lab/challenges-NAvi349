@@ -7,8 +7,11 @@ module booth_rad_tb;
 
     // Outputs
     wire done;
+    //wire [15:0] A, M, Q;
+    wire [15:0] out;
 
-    booth_rad uut (
+    booth_top uut (
+        .out(out),
         .done(done),
         .clk(clk),
         .data_in(data_in),

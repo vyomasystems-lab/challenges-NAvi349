@@ -35,7 +35,7 @@ def run_test(dut):
     ######### CTB : Modify the test to expose the bug #############
     # input transaction
 
-    # opening the file in read mode
+    # opening the instruction memory text file in read mode
     my_file = open("imem.txt", "r")
     
     # reading the file
@@ -44,8 +44,10 @@ def run_test(dut):
     # replacing end splitting the text 
     # when newline ('\n') is seen.
     mem = data.split("\n")
-    mem = [int("0x"+instr, 16) for instr in mem]
 
+    
+    mem = [int("0x"+instr, 16) for instr in mem]
+    
     my_file.close()  
       
 
@@ -56,6 +58,8 @@ def run_test(dut):
 
         
         mav_putvalue_instr = inst
+
+        
 
 
         # expected output from the model
@@ -85,4 +89,3 @@ def run_test(dut):
             cocotb.log.info(f'SRC1={hex(mav_putvalue_src1)} SRC2={hex(mav_putvalue_src2)} SRC3={hex(mav_putvalue_src3)}')
 
             print(error_message)
-

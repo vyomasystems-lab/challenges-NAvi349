@@ -189,7 +189,7 @@ def bitmanip(mav_putvalue_instr, mav_putvalue_src1,mav_putvalue_src2, mav_putval
 
     if((func7_2bit == "11") and (func3 == "001") and (opcode == "0110011")):
         print('--CMIX  17')
-        out= (mav_putvalue_src1 & mav_putvalue_src2) |(mav_putvalue_src3 & (~mav_putvalue_src2))
+        out= (mav_putvalue_src1 & mav_putvalue_src2) | (mav_putvalue_src3 & (~mav_putvalue_src2))
         mav_putvalue=out & 0xffffffff
         mav_putvalue=(mav_putvalue<<1)|1
         return mav_putvalue

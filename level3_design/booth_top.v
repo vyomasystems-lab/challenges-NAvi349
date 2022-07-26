@@ -1,4 +1,4 @@
-module booth_rad(output done, input clk, input [15:0] data_in, input start);
+module booth_top(output done, input clk, input [15:0] data_in, input start);
 
     wire ldA, clrA, sftA, ldQ, clrQ, sftQ, ldM, clrff, addsub;
     wire q0, qm1, dec, ldCnt;

@@ -39,7 +39,7 @@ module booth_controller (output reg ldA, clrA, sftA, ldQ, clrQ, sftQ, ldM, clrff
 
     always @(state) begin
         case (state)
-            S0: begin 
+            S0: begin   // this line will reset the state
                 clrA = 0; ldA = 0; sftA = 0; clrQ = 1; ldQ = 0; sftQ = 0; ldM = 0; clrff = 0; done = 0; 
             end
             S1: begin 

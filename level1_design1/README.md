@@ -65,8 +65,6 @@ except AssertionError:
   - ```inp12``` is not routed to output for select value = ```01100```(12)
   - ```inp30``` is not assigned to output
 
-
-
 ### Source of the bug
 
 ```verilog
@@ -105,5 +103,3 @@ except AssertionError:
 
 - If any of the inputs is stuck at ```01```, it would have gone unnoticed.
 - For complete verification, all the input combinations must be given - ```00, 01, 10, 11```.
-
-

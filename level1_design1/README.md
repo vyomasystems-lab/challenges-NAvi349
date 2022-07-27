@@ -46,11 +46,11 @@ except AssertionError:
 
 ## Test Scenario
 
-- Without **try..except** block
+- Without **try...except** block
   
 ![image](https://user-images.githubusercontent.com/66086031/180064990-242d8b32-2bdc-41c5-b43d-174dc762cdb8.png)
 
-- With **try..except** block
+- With **try...except** block
 
 ![image](https://user-images.githubusercontent.com/66086031/180252261-2d36bf66-1cc6-45c0-8157-d877f01a503b.png)
 
@@ -61,22 +61,49 @@ except AssertionError:
 
 ## Design Bug
 
+- There are two bugs in the design:
+  - ```inp12``` is not routed to output for select value = ```01100```(12)
+  - ```inp30``` is not assigned to output
+
+
+
+### Source of the bug
+
+```verilog
+5'b01101: out = inp12;   // the select corresponding to inp12 is sel = 5'b01100
+...
+...
+...
+5'b11101: out = inp29;    // inp30 is not assigned to the output defaults to zero
+```
+
+### Correction
+
+```verilog
+5'b01100: out = inp12;   // the select corresponding to inp12 is sel = 5'b01100
+...
+...
+...
+5'b11101: out = inp29;  
+5'b11110: out = inp30;
+```
+
 ## Fixed Design
 
 - After fixing the bugs, the verification is carried out again.
-- Here the DUT Output matches with the expected output from the python model.
+- Here the DUT output matches with the expected output from the python model.
 
 ![image](https://user-images.githubusercontent.com/66086031/180254497-96830231-e4cb-4b2e-9a2f-3cbd284753a8.png)
 
 ## Verification Strategy
 
 - In this verification plan, we basically drove the all input ports to one of the possible values. Let's say ```x```.
-- Then we route the inputs to the outputs by looping thorugh the select values.
+- Then we route the inputs to the outputs by looping through the select values.
 - If the output does not match the value ```x```, then either the input is **stuck-at** a value or the **select line** is **NOT** properly assigned.
 
 ## Is the Verification complete?
 
-- Here we use try..except block to simulate all the inputs.
-- We print the error when there is a functional mismatch.
+- If any of the inputs is stuck at ```01```, it would have gone unnoticed.
+- For complete verification, all the input combinations must be given - ```00, 01, 10, 11```.
 
 

@@ -36,7 +36,7 @@ mav_putvalue_instr = inst
 expected_mav_putvalue = bitmanip(mav_putvalue_instr, mav_putvalue_src1, mav_putvalue_src2, mav_putvalue_src3)
 ```
 
-- Whenever an instruction is executed, the name of the instruction is displayed. 
+- Whenever an instruction is executed, the name of the instruction is displayed.
 
 ## Test Scenario
 

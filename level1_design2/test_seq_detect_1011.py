@@ -60,7 +60,7 @@ async def test_seq_bug1(dut):
         detect_out = subseq(bit, input_seq)  # detect sequence 1011
         input_seq = format_seq(input_seq)
 
-        dut.inp_bit.value = bit
+        dut.inp_bit.value = bit  # input bit
 
         await FallingEdge(dut.clk)   # wait for next clock edge after giving input
 

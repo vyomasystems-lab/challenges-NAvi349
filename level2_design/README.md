@@ -36,6 +36,8 @@ mav_putvalue_instr = inst
 expected_mav_putvalue = bitmanip(mav_putvalue_instr, mav_putvalue_src1, mav_putvalue_src2, mav_putvalue_src3)
 ```
 
+- Whenever an instruction is executed, the name of the instruction is displayed. 
+
 ## Test Scenario
 
 ![image](https://user-images.githubusercontent.com/66086031/180856013-37ba52fb-60b2-4eea-bf09-12d2ef4339a1.png)
@@ -44,11 +46,48 @@ expected_mav_putvalue = bitmanip(mav_putvalue_instr, mav_putvalue_src1, mav_putv
 
 ## Design Bug
 
-![image](https://user-images.githubusercontent.com/66086031/180934782-5a6aff44-ed01-4e25-b116-703b300589e5.png)
+### Bug Identification
+
+- The `src2` is not negated.
+
+```verilog
+assign x__h39889 = mav_putvalue_src1 & mav_putvalue_src2 ;    
+```
+
+```verilog
+// ANDN Instruction
+assign field1__h109 =
+      (mav_putvalue_instr[31:25] == 7'b0100000 &&
+       x__h254 == 10'b1110110011) ?
+        x__h39889 :
+        IF_mav_putvalue_instr_BITS_31_TO_25_EQ_0b10000_ETC___d2273 ;  
+```
+
+### Bug Fix
+
+- Create **new** wire and do the proper ANDN operation.
+- Modifying `x__h39889` will affect `CMIX` instruction also.
+
+```verilog
+// This line added to negate src2 in ANDN to fix error
+assign x__h39890 = mav_putvalue_src1 & (~mav_putvalue_src2) ;
+```
+
+- Use this in the ANDN instruction.
+
+```verilog
+  assign field1__h109 =
+      (mav_putvalue_instr[31:25] == 7'b0100000 &&
+       x__h254 == 10'b1110110011) ?
+        x__h39890 :
+        IF_mav_putvalue_instr_BITS_31_TO_25_EQ_0b10000_ETC___d2273 ;
+```
+
+<!-- ![image](https://user-images.githubusercontent.com/66086031/180934782-5a6aff44-ed01-4e25-b116-703b300589e5.png) -->
 
 ![image](https://user-images.githubusercontent.com/66086031/180934860-cabc21b4-183a-408a-852c-4a36fc58d792.png)
 
-## Design Fix
+## Fixed Design
 
 ![image](https://user-images.githubusercontent.com/66086031/180934921-cba50843-d68d-4a96-8bb8-fbf5a84076ef.png)
 
@@ -60,8 +99,12 @@ expected_mav_putvalue = bitmanip(mav_putvalue_instr, mav_putvalue_src1, mav_putv
 
 ![image](https://user-images.githubusercontent.com/66086031/180935106-bf997be4-0ca0-4810-b8af-a785cd350616.png)
 
-
 ## Verification Strategy
+
+- Basically we create an instruction for each type in binary format.
+- Then we convert it to hexadecimal format.
+- We feed this hex data into the DUT and compare it with the python model.
 
 ## Verification Completeness
 
+- Each instruction is tested seperately.

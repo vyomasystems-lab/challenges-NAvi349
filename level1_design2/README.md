@@ -98,16 +98,40 @@ else
 
 ### Fixed Version
 
+- If the input bit is `1`, in the **SEQ_1 state**, it should **remain** in the state.
+
+```verilog
+SEQ_1:
+begin
+if(inp_bit == 1)
+    next_state = SEQ_1;  // this line changed
+else
+    next_state = SEQ_10;
+```
+
+```verilog
+SEQ_101:
+begin
+if(inp_bit == 1)
+    next_state = SEQ_1011; 
+else
+    next_state = SEQ_10; // this line changed
+end
+```
 
 ## Fixed Design
+
+- Now, the DUT's output matches with the expected output.
 
 ![image](https://user-images.githubusercontent.com/66086031/180466632-027366cc-4fbe-4d43-8ea3-ec0520525595.png)
 
 ## Verification Strategy
 
+- In the test plan, we basically fed a random pattern of `0`s and `1`s and stored them in a string.
+- We then use a python function, detect the `1011` pattern in the string.
+- Using this, we were able to verify the DUT's output.
+- After we detect the pattern, we remove it from the string except the last, so we can detect overlapping non-sequences.
+
 ## Verification Completeness
 
-
-
-
-
+- The test pattern generation is run a few times to test all possible combination of input test vectors.

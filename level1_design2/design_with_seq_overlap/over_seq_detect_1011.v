@@ -48,7 +48,7 @@ module over_seq_detect_1011(seq_seen, inp_bit, reset, clk);
       SEQ_1:
       begin
         if(inp_bit == 1)
-          next_state = SEQ_1; // this line changed
+          next_state = SEQ_1; // Error#1 fixed
         else
           next_state = SEQ_10;
       end
@@ -64,7 +64,7 @@ module over_seq_detect_1011(seq_seen, inp_bit, reset, clk);
         if(inp_bit == 1)
           next_state = SEQ_1011; 
         else
-          next_state = SEQ_10; // this line also changed
+          next_state = SEQ_10; // Error#2 fixed
       end
       SEQ_1011: // this will detect overlapping sequences
       begin

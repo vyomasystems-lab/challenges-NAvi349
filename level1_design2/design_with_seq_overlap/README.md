@@ -22,7 +22,9 @@ def format_seq(input_seq):
     return input_seq    
 ```
 
-## Verilog Modifications
+## Verilog Modification
+
+- Modify `SEQ_1011` state.
 
 ```verilog
 SEQ_1011: // this will detect overlapping sequences
@@ -56,4 +58,3 @@ stateDiagram-v2
     SEQ_1011 --> SEQ_10 : 0
 
 ```
-

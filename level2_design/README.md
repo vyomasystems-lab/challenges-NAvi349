@@ -44,6 +44,8 @@ expected_mav_putvalue = bitmanip(mav_putvalue_instr, mav_putvalue_src1, mav_putv
 ## Test Scenario
 
 ![image](https://user-images.githubusercontent.com/66086031/180856013-37ba52fb-60b2-4eea-bf09-12d2ef4339a1.png)
+![image](https://user-images.githubusercontent.com/66086031/181818636-3b987811-e71d-448d-944b-460337c5ed86.png)
+
 
 - We can clearly see that the DUT output of the `ANDN` instruction does not match with the python model.
 

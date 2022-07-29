@@ -1,5 +1,7 @@
 # MUX Verification
 
+This MUX has 31 inputs and 5 select lines.
+
 ## Verification Environment
 
 - Input - Drive all the inputs to one of the possible logic values. Here all the inputs with the value ```01```.
@@ -34,7 +36,7 @@ for i in range(0, 31):
 assert dut.out.value == 01
 ```
 
-- use ```try..except``` block to prevent program halt during AssertionError
+- use ```try...except``` block to prevent program halt during AssertionError
 
 ```python
 try:

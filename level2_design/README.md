@@ -8,6 +8,7 @@
 
 - `model_mkbitmanip.py` - contains the python model of the processor.
 - `imem.txt` - contains the instructions in the hexadecimal format
+- `Inst_Bin.pdf` - containts the instructions in the binary format.
 - These instructions are created using the ISA.
 
 ```py

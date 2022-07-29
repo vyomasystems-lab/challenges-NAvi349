@@ -2,6 +2,8 @@
 
 ## Instruction Set Architecture
 
+[!](https://github.com/vyomasystems-lab/challenges-NAvi349/blob/master/level2_design/instructions.png)
+
 ## Verification Environment
 
 - `model_mkbitmanip.py` - contains the python model of the processor.

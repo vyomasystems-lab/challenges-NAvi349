@@ -2,7 +2,7 @@
 
 ## Instruction Set Architecture
 
-[!](https://github.com/vyomasystems-lab/challenges-NAvi349/blob/master/level2_design/instructions.png)
+[Click to view](!https://github.com/vyomasystems-lab/challenges-NAvi349/blob/master/level2_design/instructions.png)
 
 ## Verification Environment
 

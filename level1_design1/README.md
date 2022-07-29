@@ -4,7 +4,7 @@ This MUX has 31 inputs and 5 select lines.
 
 ## Verification Environment
 
-- Input - Drive all the inputs to one of the possible logic values. Here all the inputs with the value `1`.
+- Input - Drive all the inputs to one of the possible logic values. Here all the inputs with the value `1`. The MSB becomes `0` in this case.
 
 ```python
 dut.inp0.value = 1

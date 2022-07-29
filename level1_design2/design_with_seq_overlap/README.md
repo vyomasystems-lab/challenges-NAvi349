@@ -36,4 +36,20 @@ end
 
 ## State Diagram
 
+```mermaid
+%%{init: {'theme':'dark'}}%%
+    stateDiagram-v2
+        S0 --> S1
+        S1 --> S2
+        
+    
+        S5 --> S3 : 01 and count > 0
+        S5 --> S4 : 10 and count > 0
+        S5 --> S6 : count = 0
+        
+        S2 --> S3 : 01
+        S2 --> S4 : 10
+        S2 --> S5 : 00 or 11
+
+```
 

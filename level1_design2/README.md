@@ -8,18 +8,19 @@ This sequence detector will detect *overlapping non-sequences* of the pattern ``
 
 ```mermaid
 %%{init: {'theme':'dark'}}%%
-    stateDiagram-v2
-        S0 --> S1
-        S1 --> S2
-        
+stateDiagram-v2
+    IDLE --> SEQ_1 : 1
+    IDLE --> IDLE : 0
     
-        S5 --> S3 : 01 and count > 0
-        S5 --> S4 : 10 and count > 0
-        S5 --> S6 : count = 0
-        
-        S2 --> S3 : 01
-        S2 --> S4 : 10
-        S2 --> S5 : 00 or 11
+   
+   SEQ_1 --> SEQ_1 : 1
+   SEQ_1 --> SEQ_10 : 0
+   SEQ_10 --> SEQ_101 : 1
+   SEQ_10 --> IDLE : 0
+   SEQ_101 --> SEQ_1011 : 1
+   SEQ_101 --> SEQ_10 : 0
+
+   SEQ_1011 --> IDLE
 
 ```
 
@@ -74,7 +75,6 @@ def subseq(bit, input_seq):
 
 - After a detect a `1011` sequence, we remove the subsequence.
 - This facilitates the detection of overlapping non-sequences.
-
 
 ```python
 def format_seq(input_seq):

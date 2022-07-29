@@ -31,7 +31,7 @@ for i in range(0, 31):
 - Check output
 
 ```python
-assert dut.out.value == 01
+assert dut.out.value == 1
 ```
 
 - use ```try...except``` block to prevent program halt during AssertionError

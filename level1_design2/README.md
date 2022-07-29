@@ -55,9 +55,9 @@ def subseq(bit, input_seq):
         return 0
 ```
 
-- After a detect a `1011` sequence, we remove *except the last bit*.
-- So, this facilitates the detection of overlapping non-sequences.
-- This `1` bit can be the beginning of the next valid sequence.
+- After a detect a `1011` sequence, we remove the subsequence.
+- This facilitates the detection of overlapping non-sequences.
+
 
 ```python
 def format_seq(input_seq):
@@ -132,7 +132,7 @@ end
 - In the test plan, we basically fed a random pattern of `0`s and `1`s and stored them in a string.
 - We then use a python function, detect the `1011` pattern in the string.
 - Using this, we were able to verify the DUT's output.
-- After we detect the pattern, we remove it from the string except the last, so we can detect overlapping non-sequences.
+- After we detect the pattern, we remove it from the string, so we can detect overlapping non-sequences.
 
 ## Verification Completeness
 

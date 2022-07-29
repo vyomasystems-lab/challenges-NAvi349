@@ -2,6 +2,10 @@
 
 This sequence detector will detect *overlapping non-sequences* of the pattern ```1010```.
 
+## State Diagram
+
+![image](https://user-images.githubusercontent.com/66086031/181807213-096f0bdb-89e5-49d0-8422-bd8671787866.png)
+
 ## Verification Environment
 
 ### Input test pattern generation
@@ -73,8 +77,6 @@ def format_seq(input_seq):
 ![image](https://user-images.githubusercontent.com/66086031/180468040-63e96875-d569-4d37-a462-117dd348e9b4.png)
 
 ## Design Bug
-
-### State Diagram
 
 ### Bug Identification
 

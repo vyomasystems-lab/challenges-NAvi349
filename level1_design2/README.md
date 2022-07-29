@@ -4,7 +4,24 @@ This sequence detector will detect *overlapping non-sequences* of the pattern ``
 
 ## State Diagram
 
-![image](https://user-images.githubusercontent.com/66086031/181807213-096f0bdb-89e5-49d0-8422-bd8671787866.png)
+<!-- ![image](https://user-images.githubusercontent.com/66086031/181807213-096f0bdb-89e5-49d0-8422-bd8671787866.png) -->
+
+```mermaid
+%%{init: {'theme':'dark'}}%%
+    stateDiagram-v2
+        S0 --> S1
+        S1 --> S2
+        
+    
+        S5 --> S3 : 01 and count > 0
+        S5 --> S4 : 10 and count > 0
+        S5 --> S6 : count = 0
+        
+        S2 --> S3 : 01
+        S2 --> S4 : 10
+        S2 --> S5 : 00 or 11
+
+```
 
 ## Verification Environment
 

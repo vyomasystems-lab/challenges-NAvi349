@@ -4,23 +4,21 @@ This MUX has 31 inputs and 5 select lines.
 
 ## Verification Environment
 
-- Input - Drive all the inputs to one of the possible logic values. Here all the inputs with the value ```01```.
+- Input - Drive all the inputs to one of the possible logic values. Here all the inputs with the value `1`.
 
 ```python
-dut.inp0.value = 01
-dut.inp1.value = 01
-dut.inp2.value = 01
-dut.inp3.value = 01
-dut.inp4.value = 01
-dut.inp5.value = 01
-dut.inp6.value = 01
+dut.inp0.value = 1
+dut.inp1.value = 1
+dut.inp2.value = 1
+dut.inp3.value = 1
+dut.inp4.value = 1
 ...
 ...
 ...
-dut.inp27.value = 01
-dut.inp28.value = 01
-dut.inp29.value = 01
-dut.inp30.value = 01
+dut.inp27.value = 1
+dut.inp28.value = 1
+dut.inp29.value = 1
+dut.inp30.value = 1
 ```
 
 - Loop through the select lines

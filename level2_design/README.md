@@ -92,7 +92,7 @@ assign x__h39890 = mav_putvalue_src1 & (~mav_putvalue_src2) ;
 
 ## Fixed Design
 
-![image](https://user-images.githubusercontent.com/66086031/180934921-cba50843-d68d-4a96-8bb8-fbf5a84076ef.png)
+![image](https://user-images.githubusercontent.com/66086031/182006136-6641228d-e0a1-40d8-918e-dda637a1181b.png)
 
 ## Verfication of other instructions
 

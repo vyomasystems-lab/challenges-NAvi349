@@ -4,7 +4,34 @@ Booth Multiplication is an efficient algorithm for multiplication of signed and 
 
 ## Verification Environment
 
+- Generate random inputs 4-bit.
 
+```python
+Multiplicand = random.randint(-2**4, (2**4)-1) 
+Multiplier = random.randint(-2**4, (2**4)-1)
+Result = Multiplicand * Multiplier
+```
+
+- Load the multiplicand and multiplier.
+
+```python
+await RisingEdge(dut.clk)
+
+dut.data_in.value = Multiplicand
+
+await RisingEdge(dut.clk)
+
+dut.data_in.value = Multiplier    
+```
+
+- Compare the output of the DUT and the expected output.
+
+```python
+await Timer(120, units="ns")
+out = dut.out.value.signed_integer
+dut._log.info(f"Expected value = {Result}, DUT value {out}")
+assert Result == dut.out.value.signed_integer, f"Expected value{Result} does not match the DUT value{out}"
+```
 
 ## Test Scenario
 
@@ -14,11 +41,9 @@ Booth Multiplication is an efficient algorithm for multiplication of signed and 
 
 ## Verification Strategy
 
-## Verfication Completeness
+Multiply the multiplicand and the mulitplier and compare it with the DUt's output.
 
+## Verification Completeness
 
-
-
-
-
+The DUT has been test for both signed and unsigned integers.
 

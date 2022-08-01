@@ -45,9 +45,9 @@ assert Result == dut.out.value.signed_integer, f"Expected value{Result} does not
 
 ## Test Scenario
 
-![image](https://user-images.githubusercontent.com/66086031/180978310-e033f975-e7f8-4fc7-8574-701fcfce8985.png)
+![image](https://user-images.githubusercontent.com/66086031/182075813-d88ba85a-9380-4a6a-83c0-1ca91804af67.png)
 
-![image](https://user-images.githubusercontent.com/66086031/180978447-f53dc5ba-f114-4b6b-817c-b4cf5e25130a.png)
+![image](https://user-images.githubusercontent.com/66086031/182075916-b0891db5-ff3c-4be6-9303-0129d84f1d39.png)
 
 ## Verification Strategy
 

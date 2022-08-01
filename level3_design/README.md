@@ -1,5 +1,7 @@
 # Radix - 2 Booth Multiplier
 
+GitHub Link: [Click here](https://github.com/NAvi349/rad-2-booth)
+
 Booth Multiplication is an efficient algorithm for multiplication of signed and unsigned integers. It has comparatively reduced number of clock cycles.
 
 ## State Diagram

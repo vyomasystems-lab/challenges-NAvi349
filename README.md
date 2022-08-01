@@ -11,9 +11,16 @@ As part of the hackathon, I verified 4 designs with the last design being chose 
 
 [Level 3 Design: Radix 2 Booth Multiplier](https://github.com/vyomasystems-lab/challenges-NAvi349/tree/master/level3_design)
 
+[GitHub Repo for Level 3 Source Files](https://github.com/NAvi349/rad-2-booth)
+
 ## Acknowledgements
 
-i. Anmol Saxena, TA
-ii. Kunal Ghosh, Founder, VSD
-iii. Lavanya J
-iii. Sumanto Kar, TA
+- Anmol Saxena, TA
+- Kunal Ghosh, Founder, VSD
+- Lavanya J
+- Sumanto Kar, TA
+
+## Author
+
+Navinkumar Kangalingam, B.Tech ECE Final Year at Puducherry Technological University
+Date: 01-08-2022

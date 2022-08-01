@@ -49,7 +49,7 @@ assert Result == dut.out.value.signed_integer, f"Expected value{Result} does not
 
 ## Verification Strategy
 
-Multiply the multiplicand and the mulitplier and compare it with the DUt's output.
+Multiply the multiplicand and the mulitplier and compare it with the DUT's output.
 
 ## Verification Completeness
 
